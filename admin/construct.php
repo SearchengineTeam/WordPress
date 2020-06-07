@@ -49,14 +49,13 @@ class Adseo_Metabox_Admin {
 	}
 	// 	$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'adseo_metbox_create' );
 	// nonce field
-	public function wis_list_function($post) {
+	public function adseo_list_function($post) {
 		$wis_lat = get_post_meta( $post->ID, '_wis_lat', true );
 		wp_nonce_field( 'adseo_inner_custom_box', 'adseo_inner_custom_box_nonce' );
 		echo '<ul class="tabs">
 		
 		
-		
-	} 
+	'; }  // end adseo_list_function
 	public function adseo_metabox_save_data($post_id) {
  		// Check if our nonce is set.
     		if ( ! isset( $_POST['adseo_inner_custom_box_nonce'] ) )
