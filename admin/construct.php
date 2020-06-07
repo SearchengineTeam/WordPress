@@ -83,6 +83,7 @@ class Adseo_Metabox_Admin {
 		// Update the meta field in the database.
 				update_post_meta( $post_id, '_wis_lat', $lat, $old_lat );
 		
+}
 		
 		
 
