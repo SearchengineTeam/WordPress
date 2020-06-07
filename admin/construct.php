@@ -48,6 +48,45 @@ class Adseo_Metabox_Admin {
          ); }
 	}
 	// 	$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'adseo_metbox_create' );
+	// nonce field
+	public function wis_list_function($post) {
+		$wis_lat = get_post_meta( $post->ID, '_wis_lat', true );
+		wp_nonce_field( 'adseo_inner_custom_box', 'adseo_inner_custom_box_nonce' );
+		echo '<ul class="tabs">
+		
+		
+		
+	} // > ?
+	
+	// Save data
+	public function adseo_metabox_save_data($post_id) {
+ 		// Check if our nonce is set.
+    		if ( ! isset( $_POST['adseo_inner_custom_box_nonce'] ) )
+        		return $post_id;
+			$nonce = $_POST['adseo_inner_custom_box_nonce'];
+		// Verify that the nonce is valid.
+    		if ( ! wp_verify_nonce( $nonce, 'adseo_inner_custom_box' ) )
+        		return $post_id;
+		// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+    		if ( defined( 'DOING_AUTOSAVE') && DOING_AUTOSAVE )
+        		return $post_id;
+		// Check the user's permissions.
+    		if ( 'page' == $_POST['post_type'] ) {
+		if ( ! current_user_can( 'edit_page', $post_id ) )
+            		return $post_id;
+    		} else {
+		if ( ! current_user_can( 'edit_post', $post_id ) )
+            		return $post_id;
+		}
+		// fetch if exists
+				$old_lat = get_post_meta( $post_id, '_wis_lat', true );
+		// Sanitize input
+				$lat = sanitize_text_field( $_POST['wis_lat'] );
+		// Update the meta field in the database.
+				update_post_meta( $post_id, '_wis_lat', $lat, $old_lat );
+		
+		
+		
 
 // class end
 
