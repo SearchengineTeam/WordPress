@@ -56,9 +56,7 @@ class Adseo_Metabox_Admin {
 		
 		
 		
-	} // > ?
-	
-	// Save data
+	} 
 	public function adseo_metabox_save_data($post_id) {
  		// Check if our nonce is set.
     		if ( ! isset( $_POST['adseo_inner_custom_box_nonce'] ) )
