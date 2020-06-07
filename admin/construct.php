@@ -47,6 +47,7 @@ class Adseo_Metabox_Admin {
         'high'
          ); }
 	}
+	// 	$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'adseo_metbox_create' );
 
 // class end
 
